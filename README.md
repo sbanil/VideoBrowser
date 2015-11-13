@@ -1,6 +1,4 @@
 # VideoBrowser
-VideoBrowser
-<hr>
 1) Checkout code from Repo <br>
 2) Run the sample in Simulator<br>
 3) Then use "CMD+SHIT+H" to go to home on simulator<br>
