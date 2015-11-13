@@ -25,6 +25,7 @@ class MasterViewController: UITableViewController {
     @IBAction func refreshData(sender: AnyObject) {
         
         self.loadDataFromJsonFile()
+        //self.loadDataOverNetwork()
     }
 
     
