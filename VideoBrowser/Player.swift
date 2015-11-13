@@ -199,14 +199,13 @@ public class Player: UIViewController {
         self.playerView?.player = nil
         self.delegate = nil
 
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().removeObserver(self)
 
         self.playerView?.layer.removeObserver(self, forKeyPath: PlayerReadyForDisplay, context: &PlayerLayerObserverContext)
-
         self.player.removeObserver(self, forKeyPath: PlayerRateKey, context: &PlayerObserverContext)
-
         self.player.pause()
-
         self.setupPlayerItem(nil)
     }
 
@@ -328,18 +327,11 @@ public class Player: UIViewController {
         if self.playerItem != nil {
             
             self.playerItem?.addObserver(self, forKeyPath: LoadedTimeRanges, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
-
             self.playerItem?.addObserver(self, forKeyPath: PlaybackBufferFull, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
-
-            
-            self.playerItem?.addObserver(self, forKeyPath: PlaybackBufferFull, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
-
             self.playerItem?.addObserver(self, forKeyPath: PlayerEmptyBufferKey, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
             self.playerItem?.addObserver(self, forKeyPath: PlayerKeepUp, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
             self.playerItem?.addObserver(self, forKeyPath: PlayerStatusKey, options: ([NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old]), context: &PlayerItemObserverContext)
-
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemPlaybackStalledNotification:", name: AVPlayerItemPlaybackStalledNotification, object: self.playerItem)
-
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemDidPlayToEndTime:", name: AVPlayerItemDidPlayToEndTimeNotification, object: self.playerItem)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFailedToPlayToEndTime:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: self.playerItem)
         }
@@ -357,7 +349,10 @@ public class Player: UIViewController {
     public func playerItemPlaybackStalledNotification(aNotification: NSNotification) {
             self.playbackState = .Stalled
             self.delegate?.playerPlaybackStateDidChange(self)
-            //self.performSelector("playFromCurrentTime", withObject: nil, afterDelay: 60.0)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSelector("playFromCurrentTime", withObject: nil, afterDelay: 5.0)
+            }
+        
     }
 
     public func playerItemDidPlayToEndTime(aNotification: NSNotification) {
