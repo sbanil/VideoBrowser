@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -32,43 +31,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBl-Sm-RuO">
-                                <rect key="frame" x="0.0" y="64" width="600" height="287"/>
-                                <color key="backgroundColor" red="0.047058823530000002" green="0.086274509799999996" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="JBl-Sm-RuO" secondAttribute="height" multiplier="600:287" id="Jb1-VH-dAd"/>
-                                </constraints>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="79" width="360" height="264"/>
-                                </variation>
-                            </view>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="0.0" y="526" width="600" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="104" y="393" width="191.5" height="17"/>
-                                </variation>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-lY-VIW">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyO-MF-fop">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="516"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jI-AU-gO5">
+                                        <rect key="frame" x="0.0" y="516" width="600" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JBl-Sm-RuO" firstAttribute="leading" secondItem="0XM-y9-sOw" secondAttribute="leading" id="1of-0j-VUS"/>
-                            <constraint firstItem="JBl-Sm-RuO" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="4pb-jK-nC3"/>
-                            <constraint firstAttribute="trailing" secondItem="JBl-Sm-RuO" secondAttribute="trailing" id="Oe7-rN-kWL"/>
-                            <constraint firstItem="JBl-Sm-RuO" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="fNB-99-669"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="JBl-Sm-RuO" secondAttribute="bottom" constant="175" id="inG-Oe-Xtc"/>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="57" id="uvz-Ot-xvJ"/>
-                            <constraint firstItem="JBl-Sm-RuO" firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" id="x1H-RI-jtC"/>
+                            <constraint firstItem="kcV-lY-VIW" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="CtG-mw-Io8"/>
+                            <constraint firstAttribute="trailing" secondItem="kcV-lY-VIW" secondAttribute="trailing" id="MOF-nx-GWq"/>
+                            <constraint firstItem="kcV-lY-VIW" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="TVn-O2-Ovv"/>
+                            <constraint firstItem="kcV-lY-VIW" firstAttribute="bottom" secondItem="GAO-Cl-Wes" secondAttribute="top" id="wQW-dK-yGF"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Video Details" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="36x-Jk-qBm"/>
-                        <outlet property="playerView" destination="JBl-Sm-RuO" id="znW-ix-vTy"/>
+                        <outlet property="detailDescriptionLabel" destination="4jI-AU-gO5" id="au8-zT-yLu"/>
+                        <outlet property="playerView" destination="uyO-MF-fop" id="Cxx-7H-qmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
