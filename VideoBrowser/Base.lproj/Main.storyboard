@@ -34,11 +34,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-lY-VIW">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyO-MF-fop">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyO-MF-fop">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="516"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jI-AU-gO5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jI-AU-gO5">
                                         <rect key="frame" x="0.0" y="516" width="600" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -130,7 +130,7 @@
                     <navigationItem key="navigationItem" title="Video Browser" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="TKP-IR-7BD">
                             <connections>
-                                <action selector="refreshData:" destination="7bK-jq-Zjz" id="V8I-4R-bMv"/>
+                                <action selector="refreshData:" destination="7bK-jq-Zjz" id="FgL-4Q-Z1j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
