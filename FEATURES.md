@@ -1,0 +1,14 @@
+- Video listing and browsing using a `UITableView` (`MasterViewController`).
+- Custom video player built with `AVFoundation` (`Player.swift`), supporting standard playback controls (play, pause, stop, seek) and managing playback/buffering states.
+- Loading video data from a local JSON file (`VideoData.json`).
+- Capability to load video data from a remote network source via URL (`ServiceHelper.swift`).
+- Core Data integration for managing application data, including setup of the Core Data stack (`AppDelegate`).
+- Use of a `VideoModel` to structure and handle video data throughout the application.
+- Display of video metadata in the list, such as video name, duration, and poster image (`VideoListcell`).
+- A dedicated detail view (`DetailViewController`) for displaying selected video information and embedding the video player.
+- Communication of player events (e.g., ready, state changes, buffering) through a delegate pattern (`PlayerDelegate`).
+- Integration of a custom Heads-Up Display (HUD) element (indicated by the presence of `MBProgressHUD` in the `Frameworks` directory).
+- Utilization of a `UISplitViewController` for the main UI layout, managed in `AppDelegate`.
+- Pull-to-refresh functionality in the video list to reload data.
+- Asynchronous network data fetching using `NSURLSession`.
+- Basic error handling placeholders and failure callbacks, particularly for network operations.
